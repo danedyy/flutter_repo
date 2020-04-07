@@ -16,6 +16,7 @@ class HomeController extends ControllerMVC {
     final Stream<model.Repos> stream = await getRepos();
     stream.listen((model.Repos _repo) {
       setState(() {
+        print(_repo);
         repos.add(_repo);
       });
     }, onError: (a) {

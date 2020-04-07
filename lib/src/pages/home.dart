@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_repo/src/controllers/home_contorller.dart';
+import 'package:flutter_repo/src/pages/RepoItemWidget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:flutter_repo/src/models/repos.dart' as model;
 
@@ -76,29 +77,8 @@ class _HomePageState extends StateMVC<HomePage> {
                   return SizedBox(height: 15);
                 },
                 itemBuilder: (context, index) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-
-                      SizedBox(width: 15),
-                      Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            Text(
-                              "name",
-                              style: Theme.of(context).textTheme.body2,
-                            ),
-                            Text(
-                              "owner",
-                              style: Theme.of(context).textTheme.caption,
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  );
+                  return RepoItemWidget(
+                      repo: _con.repos.elementAt(index));
                 },
               ),
             ],

@@ -15,6 +15,7 @@ Future<Stream<Repos>> getRepos() async {
       .transform(json.decoder)
       .expand((data) => (data as List))
       .map((data) {
+        print(data);
     return Repos.fromJSON(data);
   });
 }
