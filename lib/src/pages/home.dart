@@ -35,17 +35,30 @@ class _HomePageState extends StateMVC<HomePage> {
         backgroundColor: Theme.of(context).accentColor,
         elevation: 0,
         centerTitle: true,
+        leading: _con.currentPage == 1 ? Container(): InkResponse(
+          child: Icon(Icons.arrow_back),
+          onTap: _con.previousPage,
+        ),
         title: Text(
           "Flutter Repos",
           style: Theme.of(context).textTheme.title.merge(TextStyle(
               color: Theme.of(context).secondaryHeaderColor,
               letterSpacing: 1.3)),
         ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: InkResponse(
+              child: Icon(Icons.arrow_forward),
+              onTap: _con.nextPage,
+            ),
+          )
+        ],
       ),
       body: RefreshIndicator(
         onRefresh: _con.refreshRepos,
         child: _con.repos.isEmpty
-            ? Center(child: Text("no repos"),)
+            ? Center(child: CircularProgressIndicator(),)
             : SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(

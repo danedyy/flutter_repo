@@ -6,6 +6,7 @@ import 'package:flutter_repo/src/repository/home_repository.dart';
 class HomeController extends ControllerMVC {
   List<model.Repos> repos = <model.Repos>[];
   GlobalKey<ScaffoldState> scaffoldKey;
+  int currentPage = 1;
 
   HomeController() {
     this.scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -13,7 +14,7 @@ class HomeController extends ControllerMVC {
   }
 
   void listenForRepos({String message}) async {
-    final Stream<model.Repos> stream = await getRepos();
+    final Stream<model.Repos> stream = await getRepos(currentPage.toString());
     stream.listen((model.Repos _repo) {
       setState(() {
         print(_repo);
@@ -36,5 +37,19 @@ class HomeController extends ControllerMVC {
   Future<void> refreshRepos() async {
     repos.clear();
     listenForRepos(message: "Refresh Successful");
+  }
+  Future<void> nextPage() async {
+    repos.clear();
+    setState((){
+      currentPage += 1;
+    });
+    listenForRepos();
+  }
+  Future<void> previousPage() async {
+    repos.clear();
+    setState((){
+      currentPage -= 1;
+    });
+    listenForRepos();
   }
 }

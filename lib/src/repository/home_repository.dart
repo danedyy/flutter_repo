@@ -6,8 +6,8 @@ import 'package:flutter_repo/src/models/repos.dart';
 import 'package:http/http.dart' as http;
 
 
-Future<Stream<Repos>> getRepos() async {
-  final String url = 'https://api.github.com/search/repositories?q=flutter+language:dart&page=1&per_page=10';
+Future<Stream<Repos>> getRepos(String currentPage) async {
+  final String url = 'https://api.github.com/search/repositories?q=flutter+language:dart&page=$currentPage&per_page=10';
   final response = await http.get(Uri.encodeFull(url), headers: {
     HttpHeaders.contentTypeHeader: 'application/json',
   });
