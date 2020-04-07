@@ -119,8 +119,7 @@ class MyApp extends StatelessWidget {
           }
         },
         themedWidgetBuilder: (context, theme) {
-          return ValueListenableBuilder(
-              builder: (context,  value, _) {
+
                 return MaterialApp(
                   //********************************************
                   title: 'Flutter repo',
@@ -129,7 +128,6 @@ class MyApp extends StatelessWidget {
                   debugShowCheckedModeBanner: false,
                   theme: theme,
                 );
-              });
         });
   }
 }

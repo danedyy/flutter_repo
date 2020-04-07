@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_repo/src/controllers/home_contorller.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:flutter_repo/src/models/repos.dart' as model;
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,6 +11,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends StateMVC<HomePage> {
   HomeController _con;
+
 
   _HomePageState() : super(HomeController()) {
     _con = controller;
@@ -84,7 +87,7 @@ class _HomePageState extends StateMVC<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Text(
-                              "Name",
+                              "name",
                               style: Theme.of(context).textTheme.body2,
                             ),
                             Text(
