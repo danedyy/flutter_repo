@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_repo/src/models/repos.dart' as model;
 
@@ -11,23 +12,28 @@ class RepoItemWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-
-        SizedBox(width: 15),
         Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          child: Row(
             children: <Widget>[
-              Text(
-                this.repo.name,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                style: Theme.of(context).textTheme.body2,
+              CircleAvatar(
+                backgroundImage: NetworkImage(this.repo.avatar),
               ),
-              Text(
-                  this.repo.owner,
-                style: Theme.of(context).textTheme.caption,
-              )
+              SizedBox(width: 10,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Text(
+                    this.repo.name,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.body2,
+                  ),
+                  Text(
+                      this.repo.owner,
+                    style: Theme.of(context).textTheme.caption,
+                  )
+                ],
+              ),
             ],
           ),
         )

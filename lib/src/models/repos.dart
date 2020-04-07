@@ -11,4 +11,11 @@ class Repos{
     owner = jsonMap['owner']['login'].toString();
     avatar = jsonMap['owner']['avatar_url'].toString();
   }
+  Map toMap(){
+    var map = new Map<String, dynamic>();
+    map["name"] = name;
+    map["owner"] = owner;
+    return map;
+
+  }
 }

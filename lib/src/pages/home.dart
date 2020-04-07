@@ -3,6 +3,7 @@ import 'package:flutter_repo/src/controllers/home_contorller.dart';
 import 'package:flutter_repo/src/pages/RepoItemWidget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:flutter_repo/src/models/repos.dart' as model;
+import 'package:flutter_repo/src/models/repos.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -22,6 +23,7 @@ class _HomePageState extends StateMVC<HomePage> {
   @override
   initState() {
     super.initState();
+
   }
 
   @override
@@ -51,24 +53,8 @@ class _HomePageState extends StateMVC<HomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 10),
-                child: ListTile(
-                  contentPadding: EdgeInsets.symmetric(vertical: 0),
-                  leading: Icon(
-                    Icons.filter_list,
-                    color: Theme.of(context).hintColor,
-                  ),
-                  title: Text(
-                   "Flutter Repos",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.display1,
-                  ),
-                ),
-              ),
+
               ListView.separated(
-                padding: EdgeInsets.symmetric(vertical: 15),
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 primary: false,
